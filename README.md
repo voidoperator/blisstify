@@ -2,4 +2,4 @@
 
 ## _Spotify custom playlist builder!_
 
-#### This project is a React web application called Jammming. It is a site bootstrapped with React and requests the Spotify API to build an interface that allows users to search the Spotify library, create a custom playlist, then save it to their Spotify account.
+#### This project is a React web application called Jammming. Makes GET & POST requests to the Spotify API. Allows users to build custom Spotify playlists by searching the Spotify database and save their playlists directly to their spotify accounts.
