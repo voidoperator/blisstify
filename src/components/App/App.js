@@ -35,7 +35,7 @@ class App extends React.Component {
     const filterTrack = tracks.filter(
       (savedTrack) => savedTrack.id !== track.id
     );
-    this.setState({ playlistTracks: filterTrack });
+    this.setState({ PlaylistTracks: filterTrack });
   }
 
   render() {
@@ -46,7 +46,7 @@ class App extends React.Component {
         </h1>
         <div className="App">
           <SearchBar />
-          <div className="App-Playlist">
+          <div className="App-playlist">
             <SearchResults
               SearchResults={this.state.SearchResults}
               onAdd={this.addTrack}
