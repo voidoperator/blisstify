@@ -1,6 +1,6 @@
 import React from 'react';
-// import { Track } from '../Track/Track';
 import './TrackList.css';
+import { Track } from '../Track/Track';
 
 export class TrackList extends React.Component {
   render() {
@@ -8,13 +8,12 @@ export class TrackList extends React.Component {
       <div className="TrackList">
         {this.props.tracks.map((song) => {
           return (
-            <div>
-              <ul key={song.id}>
-                <li key={song.id}>{song.name}</li>
-                <li key={song.id}>{song.artist}</li>
-                <li key={song.id}>{song.album}</li>
-              </ul>
-            </div>
+            <Track
+              name={song.name}
+              artist={song.artist}
+              album={song.album}
+              key={song.id}
+            />
           );
         })}
       </div>
