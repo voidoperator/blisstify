@@ -1,5 +1,5 @@
 import './App.css';
-// import { SearchBar } from '../SearchBar';
+import { SearchBar } from '../SearchBar';
 // import { SearchResults } from '../SearchResults';
 // import { Playlist } from '../Playlist';
 
@@ -10,7 +10,7 @@ function App() {
         Ja<span className="highlight">mmm</span>ing
       </h1>
       <div className="App">
-        {/* <SearchBar /> */}
+        <SearchBar />
         <div className="App-Playlist">
           {/* <SearchResults /> */}
           {/* <Playlist /> */}
