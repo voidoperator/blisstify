@@ -4,6 +4,6 @@ import './TrackList.css';
 
 export class TrackList extends React.Component {
   render() {
-    return <div>PlaceHolder</div>;
+    return <div className="TrackList">TrackComponentPlaceHolder</div>;
   }
 }
