@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      PlaylistName: 'My Love',
+      PlaylistName: '',
       PlaylistTracks: [
         { name: 'name5', artist: 'artist5', album: 'album5', id: 5 },
         { name: 'name6', artist: 'artist6', album: 'album6', id: 6 },
@@ -22,6 +22,7 @@ class App extends React.Component {
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
   }
 
   addTrack(track) {
@@ -36,6 +37,12 @@ class App extends React.Component {
       (savedTrack) => savedTrack.id !== track.id
     );
     this.setState({ PlaylistTracks: filterTrack });
+  }
+
+  updatePlaylistName(name) {
+    const playlistName = this.state.PlaylistName;
+    if (playlistName === name) return;
+    this.setState({ PlaylistName: name });
   }
 
   render() {
@@ -55,6 +62,7 @@ class App extends React.Component {
               PlaylistName={this.state.PlaylistName}
               PlaylistTracks={this.state.PlaylistTracks}
               onRemove={this.removeTrack}
+              onChange={this.updatePlaylistName}
             />
           </div>
         </div>
