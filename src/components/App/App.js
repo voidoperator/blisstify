@@ -1,7 +1,7 @@
 import './App.css';
-import { SearchBar } from '../SearchBar';
-// import { SearchResults } from '../SearchResults';
-// import { Playlist } from '../Playlist';
+import { SearchBar } from '../SearchBar/SearchBar';
+import { SearchResults } from '../SearchResults/SearchResults';
+import { Playlist } from '../Playlist/Playlist';
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
       <div className="App">
         <SearchBar />
         <div className="App-Playlist">
-          {/* <SearchResults /> */}
-          {/* <Playlist /> */}
+          <SearchResults />
+          <Playlist />
         </div>
       </div>
     </div>
