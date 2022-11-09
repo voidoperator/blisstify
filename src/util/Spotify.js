@@ -85,12 +85,10 @@ const Spotify = {
           },
           body: JSON.stringify({ uris: tracklist }),
         };
-        console.log(urlToAddItems, postItemsHeaders);
         const addItemsResponse = await fetch(urlToAddItems, postItemsHeaders);
         if (addItemsResponse.ok) {
           const playlistFilled = await addItemsResponse.json();
           playlistID = playlistFilled.id;
-          console.log(playlistFilled);
         }
       }
     }
