@@ -48,7 +48,7 @@ class App extends React.Component {
   }
 
   savePlaylist(playlist) {
-    const trackURIs = [...playlist];
+    // const trackURIs = [...playlist];
   }
 
   search(term) {
