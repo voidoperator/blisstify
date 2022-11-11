@@ -15,7 +15,13 @@ export class Playlist extends React.Component {
   }
 
   render() {
-    return (
+    return this.props.isLoading ? (
+      <div className="Playlist">
+        <div className="saving-wrapper">
+          <h3>Saving playlist...</h3>
+        </div>
+      </div>
+    ) : (
       <div className="Playlist">
         <input
           placeholder="Playlist Name"
