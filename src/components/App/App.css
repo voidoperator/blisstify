@@ -50,3 +50,15 @@ h2 {
     flex-direction: column;
   }
 }
+
+.logo-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(1, 12, 63, 1);
+}
+
+img {
+  margin: 15px 0 15px 0;
+  height: 5rem;
+}

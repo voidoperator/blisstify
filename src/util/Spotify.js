@@ -1,5 +1,5 @@
-// const redirectURI = 'https://blisstify.surge.sh/';
-const redirectURI = 'http://localhost:3000/';
+const redirectURI = 'https://blisstify.surge.sh/';
+// const redirectURI = 'http://localhost:3000/';
 const baseUrl = 'https://api.spotify.com/v1/';
 const spotifyAppID = process.env.REACT_APP_SPOTIFY_APP_ID;
 let userAccessToken;

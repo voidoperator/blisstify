@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import LogoHeader from './blisstify-header-logo.png';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { Playlist } from '../Playlist/Playlist';
@@ -62,9 +63,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>
-          Bli<span className="highlight">ss</span>tify
-        </h1>
+        <div className="logo-header">
+          <img src={LogoHeader} alt="Logo Header" title="Blisstify" />
+        </div>
         <div className="App">
           <SearchBar value={this.state.firstTermSaved} onSearch={this.search} />
           <div className="App-playlist">
