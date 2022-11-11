@@ -21,9 +21,10 @@ export class Playlist extends React.Component {
           placeholder="Playlist Name"
           onChange={this.handleNameChange}
           id="Playlist-Name-Input"
+          value={this.props.value}
         />
         <TrackList
-          tracks={this.props.PlaylistTracks}
+          tracks={this.props.playlistTracks}
           onRemove={this.props.onRemove}
           isRemoval={true}
         />

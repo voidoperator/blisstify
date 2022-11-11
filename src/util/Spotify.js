@@ -1,3 +1,4 @@
+// const redirectURI = 'https://blisstify.surge.sh/';
 const redirectURI = 'http://localhost:3000/';
 const baseUrl = 'https://api.spotify.com/v1/';
 const spotifyAppID = process.env.REACT_APP_SPOTIFY_APP_ID;
@@ -15,6 +16,8 @@ const Spotify = {
       let expiresIn = Number(expiration[1]) * 1000;
       window.setTimeout(() => {
         userAccessToken = '';
+        console.log('token cleared');
+        console.log(userAccessToken);
       }, expiresIn);
       window.history.pushState('Access Token', null, '/');
       return userAccessToken;

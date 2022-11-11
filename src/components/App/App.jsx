@@ -9,9 +9,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      PlaylistName: '',
-      PlaylistTracks: [],
-      SearchResults: [],
+      playlistName: '',
+      playlistTracks: [],
+      searchResults: [],
+      firstTermSaved: '',
+      playlistCheck: 0,
+      isLoadingSave: false,
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
@@ -21,37 +24,38 @@ class App extends React.Component {
   }
 
   addTrack(track) {
-    const tracks = this.state.PlaylistTracks;
+    const tracks = this.state.playlistTracks;
     if (tracks.find((savedTrack) => savedTrack.id === track.id)) return;
-    this.setState({ playlistTracks: tracks.push(track) });
+    this.setState({ playlistCheck: tracks.push(track) });
   }
 
   removeTrack(track) {
-    const tracks = this.state.PlaylistTracks;
+    const tracks = this.state.playlistTracks;
     const filterTrack = tracks.filter(
       (savedTrack) => savedTrack.id !== track.id
     );
-    this.setState({ PlaylistTracks: filterTrack });
+    this.setState({ playlistTracks: filterTrack });
   }
 
   updatePlaylistName(name) {
-    const playlistName = this.state.PlaylistName;
+    const playlistName = this.state.playlistName;
     if (playlistName === name) return;
-    this.setState({ PlaylistName: name });
+    this.setState({ playlistName: name });
   }
 
   savePlaylist() {
-    const trackUris = this.state.PlaylistTracks.map((track) => track.URI);
-    Spotify.savePlaylist(this.state.PlaylistName, trackUris).then(() => {
-      this.setState({ PlaylistName: '', PlaylistTracks: [] });
+    this.setState({ isLoadingSave: true });
+    const trackUris = this.state.playlistTracks.map((track) => track.URI);
+    Spotify.savePlaylist(this.state.playlistName, trackUris).then(() => {
+      this.setState({ playlistName: '', playlistTracks: [] });
       window.alert('Playlist successfully saved to profile!');
-      document.getElementById('Playlist-Name-Input').value = '';
+      this.setState({ isLoadingSave: false });
     });
   }
 
   search(term) {
-    Spotify.search(term).then((searchResults) => {
-      this.setState({ SearchResults: searchResults });
+    Spotify.search(term).then((results) => {
+      this.setState({ searchResults: results });
     });
   }
 
@@ -59,21 +63,23 @@ class App extends React.Component {
     return (
       <div>
         <h1>
-          Ja<span className="highlight">mmm</span>ing
+          Bli<span className="highlight">ss</span>tify
         </h1>
         <div className="App">
-          <SearchBar onSearch={this.search} />
+          <SearchBar value={this.state.firstTermSaved} onSearch={this.search} />
           <div className="App-playlist">
             <SearchResults
-              SearchResults={this.state.SearchResults}
+              searchResults={this.state.searchResults}
               onAdd={this.addTrack}
             />
             <Playlist
-              PlaylistName={this.state.PlaylistName}
-              PlaylistTracks={this.state.PlaylistTracks}
+              playlistName={this.state.playlistName}
+              playlistTracks={this.state.playlistTracks}
               onRemove={this.removeTrack}
               onChange={this.updatePlaylistName}
+              value={this.state.playlistName}
               onSave={this.savePlaylist}
+              isLoading={this.state.isLoadingSave}
             />
           </div>
         </div>

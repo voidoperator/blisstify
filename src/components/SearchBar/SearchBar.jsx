@@ -5,11 +5,19 @@ export class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: '',
+      term: this.props.value,
     };
     this.handleTermChange = this.handleTermChange.bind(this);
     this.handleKeypress = this.handleKeypress.bind(this);
     this.search = this.search.bind(this);
+  }
+
+  componentDidMount() {
+    const localSearchTerm = localStorage.getItem('firstTerm');
+    if (!localSearchTerm) return;
+    this.setState({ term: localSearchTerm });
+    localStorage.removeItem('firstTerm');
+    this.props.onSearch(this.state.term);
   }
 
   handleKeypress(e) {
@@ -25,6 +33,7 @@ export class SearchBar extends React.Component {
   }
 
   search() {
+    localStorage.setItem('firstTerm', this.state.term);
     this.props.onSearch(this.state.term);
   }
 
@@ -35,6 +44,7 @@ export class SearchBar extends React.Component {
           onChange={this.handleTermChange}
           onKeyUp={this.handleKeypress}
           placeholder="Enter A Song, Album, or Artist"
+          value={this.state.term}
         />
         <button onClick={this.search} className="SearchButton">
           Search
