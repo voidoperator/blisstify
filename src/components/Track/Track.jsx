@@ -20,20 +20,27 @@ export class Track extends React.Component {
     return (
       <div className="Track">
         <div className="Track-information">
-          <h3>{this.props.track.name}</h3>
-          <p>
-            {this.props.track.artist} | {this.props.track.album}
-          </p>
+          <div className="info-action-wrapper">
+            <h3>{this.props.track.name}</h3>
+            <p>
+              {this.props.track.artist} | {this.props.track.album}
+            </p>
+          </div>
+          <div className="button-wrapper">
+            {!this.props.isRemoval ? (
+              <button onClick={this.addTrack} className="Track-action">
+                +
+              </button>
+            ) : (
+              <button onClick={this.removeTrack} className="Track-action">
+                -
+              </button>
+            )}
+          </div>
         </div>
-        {!this.props.isRemoval ? (
-          <button onClick={this.addTrack} className="Track-action">
-            +
-          </button>
-        ) : (
-          <button onClick={this.removeTrack} className="Track-action">
-            -
-          </button>
-        )}
+        <audio controls onClick={this.handlePlaying}>
+          <source src={this.props.track.previewUrl} type="audio/mp3" />
+        </audio>
       </div>
     );
   }
